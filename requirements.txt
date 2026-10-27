@@ -1,0 +1,20 @@
+# ---------------------------------------------------------------------------
+# FacePass 依赖（Python 3.9+）
+#
+# 重要：PyPI 上的 dlib 只有源码包（没有 Windows wheel），pip 会尝试本地编译，
+# 需要 CMake + Visual Studio Build Tools（C++ 工作负载），通常 10 分钟以上。
+# 三种更省事的方式（任选其一）：
+#   1) conda install -c conda-forge dlib
+#   2) 下载与 Python 版本匹配的社区预编译 wheel，然后 pip install xxx.whl
+#   3) 在 WSL / Linux 上运行（manylinux 有官方 wheel）
+# 其余依赖与 dlib 无关，可以先单独安装：
+#     pip install fastapi "uvicorn[standard]" pymysql numpy pillow python-multipart
+# ---------------------------------------------------------------------------
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.27,<1.0
+pymysql>=1.1.0
+cryptography>=41.0        # MySQL 8 的 caching_sha2_password 需要；5.7 装上也无害
+numpy>=1.23,<3.0
+pillow>=10.0
+python-multipart>=0.0.9   # 员工录入的 multipart 表单
+dlib>=19.24.0
